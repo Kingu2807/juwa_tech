@@ -1,6 +1,77 @@
 [
   {
     "supplier": {
+      "value": "Mon Entreprise\n22, Avenue Voltaire\n13000 Marseille\nN° Siren ou Siret : 1234567-8\nN° TVA Intra : FRXX 99999999",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceDate": {
+      "value": "2.6.2021",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceNumber": {
+      "value": "143",
+      "confidence": "high",
+      "warning": null
+    },
+    "lineItems": [
+      {
+        "designation": {
+          "value": "Main-d'œuvre",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 5,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 60,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Produit",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 10,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 105,
+          "confidence": "high",
+          "warning": null
+        }
+      }
+    ],
+    "totalHT": {
+      "value": 1350,
+      "confidence": "high",
+      "warning": null
+    },
+    "totalTTC": {
+      "value": 1620,
+      "confidence": "high",
+      "warning": null
+    },
+    "sourceDocument": "facture6.pdf",
+    "warnings": [],
+    "meta": {
+      "extractedAt": "2026-07-24T01:26:19.863Z",
+      "ocrModel": "mistral-ocr-latest",
+      "extractionModel": "mistral-large-latest",
+      "ocrCharCount": 969
+    }
+  },
+  {
+    "supplier": {
       "value": "ATELIER MÉCA-PRÉCISION",
       "confidence": "high",
       "warning": null
@@ -115,7 +186,7 @@
     "sourceDocument": "facture_1_meca_precision.pdf",
     "warnings": [],
     "meta": {
-      "extractedAt": "2026-07-24T00:24:27.150Z",
+      "extractedAt": "2026-07-24T01:19:34.750Z",
       "ocrModel": "mistral-ocr-latest",
       "extractionModel": "mistral-large-latest",
       "ocrCharCount": 1563
@@ -222,7 +293,7 @@
       "Incohérence : somme des lignes = 1020.00 mais total HT lu = 1040.00. À vérifier manuellement."
     ],
     "meta": {
-      "extractedAt": "2026-07-24T00:24:36.930Z",
+      "extractedAt": "2026-07-24T01:19:41.699Z",
       "ocrModel": "mistral-ocr-latest",
       "extractionModel": "mistral-large-latest",
       "ocrCharCount": 850
@@ -344,7 +415,7 @@
     "sourceDocument": "facture_3_scan_2009.pdf",
     "warnings": [],
     "meta": {
-      "extractedAt": "2026-07-24T00:24:47.805Z",
+      "extractedAt": "2026-07-24T01:19:49.609Z",
       "ocrModel": "mistral-ocr-latest",
       "extractionModel": "mistral-large-latest",
       "ocrCharCount": 897
@@ -453,6 +524,130 @@
       "ocrModel": "mistral-ocr-latest",
       "extractionModel": "mistral-large-latest",
       "ocrCharCount": 1138
+    }
+  },
+  {
+    "supplier": {
+      "value": "lansier-bip.com",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceDate": {
+      "value": "01 septembre 2021",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceNumber": {
+      "value": "FA2100-00001",
+      "confidence": "high",
+      "warning": null
+    },
+    "lineItems": [
+      {
+        "designation": {
+          "value": "Acer du parquet avec de la même auroux loct",
+          "confidence": "medium",
+          "warning": "Désignation partiellement illisible ou erronée (texte OCR dégradé)"
+        },
+        "quantity": {
+          "value": 18.8,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 18.8,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Montage du plafond et murs de face et de gauche",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 18.8,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 48.8,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Recruture et application de 2 passes d'action plafond et murs incluant la fourniture et pose de PGMFTT",
+          "confidence": "medium",
+          "warning": "Désignation partiellement illisible ou erronée (texte OCR dégradé)"
+        },
+        "quantity": {
+          "value": 18.84,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 22.4,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Recruture et application de 2 escelles de peinture l'article blanche sur plafond et murs",
+          "confidence": "medium",
+          "warning": "Désignation partiellement illisible ou erronée (texte OCR dégradé)"
+        },
+        "quantity": {
+          "value": 14.75,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 25.5,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Vertigage - displacement",
+          "confidence": "medium",
+          "warning": "Désignation partiellement illisible ou erronée (texte OCR dégradé)"
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 150,
+          "confidence": "high",
+          "warning": null
+        }
+      }
+    ],
+    "totalHT": {
+      "value": 1117.37,
+      "confidence": "medium",
+      "warning": "Montant HT après remise ambigu (lecture OCR incertaine pour les décimales)"
+    },
+    "totalTTC": {
+      "value": 1117.37,
+      "confidence": "low",
+      "warning": "Montant TTC incohérent avec la TVA mentionnée (autoliquidation). Valeur extraite du tableau non fiable."
+    },
+    "sourceDocument": "facture_7_flou.pdf",
+    "warnings": [
+      "Incohérence : somme des lignes = 2219.02 mais total HT lu = 1117.37. À vérifier manuellement."
+    ],
+    "meta": {
+      "extractedAt": "2026-07-24T01:33:19.157Z",
+      "ocrModel": "mistral-ocr-latest",
+      "extractionModel": "mistral-large-latest",
+      "ocrCharCount": 1523
     }
   }
 ]
