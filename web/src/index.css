@@ -1,0 +1,102 @@
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --ink: #1c2430;
+  --muted: #6b7480;
+  --border: #e3e6ea;
+
+  /* Codes couleur d'incertitude — cohérents dans toute l'interface */
+  --ok-bg: #e9f7ef;   --ok-fg: #1a7f4b;   --ok-line: #b6e3c8;
+  --warn-bg: #fff5e6; --warn-fg: #b5730a;  --warn-line: #f4d9a6;
+  --bad-bg: #fdecec;  --bad-fg: #c0392b;   --bad-line: #f3c0bb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+
+.app-head h1 { font-size: 22px; margin: 0 0 4px; }
+.app-head p { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+
+/* Zone de chargement d'un JSON */
+.loader {
+  border: 1.5px dashed var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: var(--card);
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--muted);
+  margin-bottom: 24px;
+}
+.loader input { font-size: 13px; }
+
+/* Carte facture */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+}
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.supplier { font-size: 20px; font-weight: 700; margin: 0; }
+.source {
+  font-size: 12px; color: var(--muted);
+  background: #f0f2f5; border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+}
+.source b { color: var(--ink); font-weight: 600; }
+
+/* Bandeau de synthèse d'incertitude — impossible à rater */
+.banner { border-radius: 10px; padding: 10px 14px; font-size: 14px; margin: 14px 0 4px; font-weight: 600; }
+.banner.clean { background: var(--ok-bg);  color: var(--ok-fg);  border: 1px solid var(--ok-line); }
+.banner.check { background: var(--bad-bg); color: var(--bad-fg); border: 1px solid var(--bad-line); }
+
+/* Grille des champs d'en-tête */
+.fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
+.field { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+.field .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+.field .value { font-size: 16px; font-weight: 600; margin-top: 2px; display: flex; align-items: center; gap: 8px; }
+
+/* États d'un champ */
+.chip { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.ok   { background: var(--ok-bg);   color: var(--ok-fg); }
+.chip.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.chip.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+
+.field.is-bad  { border-color: var(--bad-line);  background: var(--bad-bg); }
+.field.is-warn { border-color: var(--warn-line); background: var(--warn-bg); }
+
+.missing { color: var(--bad-fg); font-style: italic; }
+.field-warning { font-size: 12px; color: var(--bad-fg); margin-top: 6px; }
+
+/* Tableau des lignes */
+table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+th { text-align: left; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.cell-bad  { background: var(--bad-bg); }
+td.cell-warn { background: var(--warn-bg); }
+.cell-flag { font-size: 11px; color: var(--bad-fg); display: block; }
+
+.totals { display: flex; gap: 24px; justify-content: flex-end; margin-top: 14px; }
+.total-box { text-align: right; }
+.total-box .label { font-size: 12px; color: var(--muted); }
+.total-box .value { font-size: 18px; font-weight: 700; }
+
+/* Liste des avertissements document */
+.doc-warnings { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 12px; }
+.doc-warnings h4 { margin: 0 0 8px; font-size: 13px; color: var(--bad-fg); }
+.doc-warnings li { font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-bottom: 20px; align-items: center; }
+.legend .chip { font-size: 11px; }
+.meta { font-size: 11px; color: var(--muted); margin-top: 12px; }

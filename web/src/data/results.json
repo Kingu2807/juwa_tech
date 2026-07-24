@@ -1,0 +1,458 @@
+[
+  {
+    "supplier": {
+      "value": "ATELIER MÉCA-PRÉCISION",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceDate": {
+      "value": "12/06/2026",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceNumber": {
+      "value": "FAC-2026-0342",
+      "confidence": "high",
+      "warning": null
+    },
+    "lineItems": [
+      {
+        "designation": {
+          "value": "Vérin hydraulique double effet VDE-80/45 Course 400 mm — joints Viton, tige chromée",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 4,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 486,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Kit joints d'étanchéité réf. KJ-2214 Compatible pompes série P200",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 12,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 38.5,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Usinage flasque acier S355 sur plan n° 6612-B Tolérance ±0,02 mm, traitement anticorrosion",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 6,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 152,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Contrôle dimensionnel tridimensionnel Rapport de contrôle fourni (norme ISO 2768-f)",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 290,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Forfait emballage et transport Livraison site Bourgoin-Jallieu, calage bois",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 145,
+          "confidence": "high",
+          "warning": null
+        }
+      }
+    ],
+    "totalHT": {
+      "value": 3753,
+      "confidence": "high",
+      "warning": null
+    },
+    "totalTTC": {
+      "value": 4503.6,
+      "confidence": "high",
+      "warning": null
+    },
+    "sourceDocument": "facture_1_meca_precision.pdf",
+    "warnings": [],
+    "meta": {
+      "extractedAt": "2026-07-24T00:24:27.150Z",
+      "ocrModel": "mistral-ocr-latest",
+      "extractionModel": "mistral-large-latest",
+      "ocrCharCount": 1563
+    }
+  },
+  {
+    "supplier": {
+      "value": "STUDIO BOTANICA - Lou Huet — Micro-entreprise",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceDate": {
+      "value": "03/06/26",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceNumber": {
+      "value": "2026-087",
+      "confidence": "high",
+      "warning": null
+    },
+    "lineItems": [
+      {
+        "designation": {
+          "value": "Tonte et débroussaillage (1 200 m²)",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 320,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Taille de haies et évacuation",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 4,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 95,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Plantation massifs (fourniture incluse)",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 140,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Traitement phytosanitaire doux",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 3,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 60,
+          "confidence": "high",
+          "warning": null
+        }
+      }
+    ],
+    "totalHT": {
+      "value": 1040,
+      "confidence": "high",
+      "warning": null
+    },
+    "totalTTC": {
+      "value": 1248,
+      "confidence": "high",
+      "warning": null
+    },
+    "sourceDocument": "facture_2_studio_botanica.pdf",
+    "warnings": [
+      "Incohérence : somme des lignes = 1020.00 mais total HT lu = 1040.00. À vérifier manuellement."
+    ],
+    "meta": {
+      "extractedAt": "2026-07-24T00:24:36.930Z",
+      "ocrModel": "mistral-ocr-latest",
+      "extractionModel": "mistral-large-latest",
+      "ocrCharCount": 850
+    }
+  },
+  {
+    "supplier": {
+      "value": "SARL ROULEMENTS & TRANSMISSIONS",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceDate": {
+      "value": "17/09/2009",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceNumber": {
+      "value": "09-1187",
+      "confidence": "high",
+      "warning": null
+    },
+    "lineItems": [
+      {
+        "designation": {
+          "value": "Roulement a billes SKF 6208-2RS",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 8,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 14.6,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Courroie trapezoidale SPZ 1250",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 6,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 9.85,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Graisse lithium EP2 - cartouche 400g",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 24,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 4.2,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Joint spi 45x62x8 nitrile",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 15,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 2.95,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Port et emballage",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 18,
+          "confidence": "high",
+          "warning": null
+        }
+      }
+    ],
+    "totalHT": {
+      "value": 338.95,
+      "confidence": "high",
+      "warning": null
+    },
+    "totalTTC": {
+      "value": 405.38,
+      "confidence": "high",
+      "warning": null
+    },
+    "sourceDocument": "facture_3_scan_2009.pdf",
+    "warnings": [],
+    "meta": {
+      "extractedAt": "2026-07-24T00:24:47.805Z",
+      "ocrModel": "mistral-ocr-latest",
+      "extractionModel": "mistral-large-latest",
+      "ocrCharCount": 897
+    }
+  },
+  {
+    "supplier": {
+      "value": "HYDROFLUID COMPOSANTS",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceDate": {
+      "value": "28 mai 2026",
+      "confidence": "high",
+      "warning": null
+    },
+    "invoiceNumber": {
+      "value": "HF-2026-1043",
+      "confidence": "high",
+      "warning": null
+    },
+    "lineItems": [
+      {
+        "designation": {
+          "value": "Électrovanne 4/3 contre formé 220 V",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 3,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 187.4,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Filtre pression 60 µm avec indicateur",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 5,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 42.9,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Flexible hydraulique 1/2\" long. 1,5 m",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 10,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 26.35,
+          "confidence": "high",
+          "warning": null
+        }
+      },
+      {
+        "designation": {
+          "value": "Manomètre glycérine 0-250 bar Ø100",
+          "confidence": "high",
+          "warning": null
+        },
+        "quantity": {
+          "value": 4,
+          "confidence": "high",
+          "warning": null
+        },
+        "unitPrice": {
+          "value": 31.8,
+          "confidence": "high",
+          "warning": null
+        }
+      }
+    ],
+    "totalHT": {
+      "value": 1167.4,
+      "confidence": "high",
+      "warning": null
+    },
+    "totalTTC": {
+      "value": 1400.88,
+      "confidence": "high",
+      "warning": null
+    },
+    "sourceDocument": "facture_4_hydrofluid_encodage.pdf",
+    "warnings": [],
+    "meta": {
+      "extractedAt": "2026-07-24T00:24:56.677Z",
+      "ocrModel": "mistral-ocr-latest",
+      "extractionModel": "mistral-large-latest",
+      "ocrCharCount": 1138
+    }
+  }
+]

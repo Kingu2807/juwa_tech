@@ -1,0 +1,19 @@
+# Dépendances
+node_modules/
+
+# Secrets — la clé API n'est JAMAIS commitée
+.env
+.env.local
+
+# Sorties du pipeline (PDF de test + JSON générés)
+pipeline/invoices/*
+!pipeline/invoices/.gitkeep
+pipeline/output/*
+!pipeline/output/.gitkeep
+
+# Build
+dist/
+*.tsbuildinfo
+
+# Divers
+.DS_Store
