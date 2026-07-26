@@ -6,6 +6,7 @@
   "description": "B1 — Extraction structurée de factures PDF (OCR Mistral -> JSON validé Zod)",
   "scripts": {
     "extract": "tsx src/cli.ts",
+    "serve": "tsx src/server.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx src/verify.ts"
   },

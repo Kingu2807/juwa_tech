@@ -15,5 +15,11 @@ pipeline/output/*
 dist/
 *.tsbuildinfo
 
+# Outils de développement (réinstallables, hors livrable)
+# Le skill de design Impeccable : npx skills add pbakaus/impeccable
+.agents/
+.claude/
+skills-lock.json
+
 # Divers
 .DS_Store

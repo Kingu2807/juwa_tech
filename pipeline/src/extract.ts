@@ -22,24 +22,58 @@ const EPS = 0.02;
  * Ces avertissements viennent en plus de ceux du modèle et servent de filet anti-hallucination.
  */
 function coherenceChecks(inv: ExtractedInvoice, warnings: string[]): void {
-  // 1) Somme des lignes (quantité × prix unitaire) vs total HT.
-  const allLinesReadable = inv.lineItems.every(
-    (l) => l.quantity.value !== null && l.unitPrice.value !== null
-  );
-  if (inv.totalHT.value !== null && inv.lineItems.length > 0 && allLinesReadable) {
-    const computed = inv.lineItems.reduce(
-      (sum, l) => sum + (l.quantity.value ?? 0) * (l.unitPrice.value ?? 0),
-      0
-    );
-    if (Math.abs(computed - inv.totalHT.value) > EPS) {
+  // Devient vrai dès qu'un contrôle met le total HT en doute : la TVA et le TTC qui en
+  // découlent deviennent alors suspects par ricochet (voir contrôle 5).
+  let htSuspect = false;
+
+  // 1) CHAQUE LIGNE : le total imprimé doit valoir quantité × prix unitaire.
+  //    On ne corrige rien — on signale que le document se contredit lui-même.
+  inv.lineItems.forEach((l, i) => {
+    const q = l.quantity.value;
+    const p = l.unitPrice.value;
+    const printed = l.lineTotal?.value ?? null;
+    if (q === null || p === null || printed === null) return;
+
+    const computed = q * p;
+    if (Math.abs(computed - printed) > EPS) {
+      const name = l.designation.value ?? `ligne ${i + 1}`;
       warnings.push(
-        `Incohérence : somme des lignes = ${computed.toFixed(2)} mais total HT lu = ` +
-          `${inv.totalHT.value.toFixed(2)}. À vérifier manuellement.`
+        `Ligne « ${name} » : total imprimé ${printed.toFixed(2)} alors que ` +
+          `${q} × ${p.toFixed(2)} = ${computed.toFixed(2)}. Erreur sur le document même.`
       );
     }
+  });
+
+  // 2) SOMME DES LIGNES vs total HT. On additionne en priorité les totaux IMPRIMÉS
+  //    (la réalité du document) ; à défaut seulement, les produits quantité × prix.
+  const printedTotals = inv.lineItems.map((l) => l.lineTotal?.value ?? null);
+  const hasLines = inv.lineItems.length > 0;
+  const allPrinted = hasLines && printedTotals.every((v) => v !== null);
+  const allComputable =
+    hasLines && inv.lineItems.every((l) => l.quantity.value !== null && l.unitPrice.value !== null);
+
+  let sum: number | null = null;
+  let basis = "";
+  if (allPrinted) {
+    sum = printedTotals.reduce((s: number, v) => s + (v as number), 0);
+    basis = "des totaux de lignes imprimés";
+  } else if (allComputable) {
+    sum = inv.lineItems.reduce(
+      (s, l) => s + (l.quantity.value as number) * (l.unitPrice.value as number),
+      0
+    );
+    basis = "des lignes (quantité × prix)";
   }
 
-  // 2) Cohérence HT / TTC : le TTC doit être >= HT.
+  if (sum !== null && inv.totalHT.value !== null && Math.abs(sum - inv.totalHT.value) > EPS) {
+    warnings.push(
+      `Incohérence : somme ${basis} = ${sum.toFixed(2)} mais total HT lu = ` +
+        `${inv.totalHT.value.toFixed(2)}. À vérifier manuellement.`
+    );
+    htSuspect = true;
+  }
+
+  // 3) Cohérence HT / TTC : le TTC doit être >= HT.
   if (inv.totalHT.value !== null && inv.totalTTC.value !== null) {
     if (inv.totalTTC.value + EPS < inv.totalHT.value) {
       warnings.push(
@@ -49,7 +83,35 @@ function coherenceChecks(inv: ExtractedInvoice, warnings: string[]): void {
     }
   }
 
-  // 3) Rappel des champs clés manquants, remonté au niveau document pour l'interface.
+  // 4) Cohérence HT + TVA = TTC. Le contrôle le plus parlant sur une facture :
+  // si les trois montants sont lus, leur addition doit tomber juste.
+  const tva = inv.totalTVA?.value ?? null;
+  if (inv.totalHT.value !== null && tva !== null && inv.totalTTC.value !== null) {
+    const expected = inv.totalHT.value + tva;
+    if (Math.abs(expected - inv.totalTTC.value) > EPS) {
+      warnings.push(
+        `Incohérence : total HT (${inv.totalHT.value.toFixed(2)}) + TVA (${tva.toFixed(2)}) ` +
+          `= ${expected.toFixed(2)} mais total TTC lu = ${inv.totalTTC.value.toFixed(2)}.`
+      );
+    }
+  }
+
+  // 5) CASCADE : si le total HT est douteux, tout ce qui en découle l'est aussi.
+  //    La TVA peut être « correcte » vis-à-vis du HT imprimé tout en étant fausse,
+  //    puisqu'elle est calculée sur une base erronée. On le dit sans rien recalculer.
+  if (htSuspect) {
+    const derived: string[] = [];
+    if (inv.totalTVA?.value != null) derived.push(`la TVA (${inv.totalTVA.value.toFixed(2)})`);
+    if (inv.totalTTC.value !== null) derived.push(`le total TTC (${inv.totalTTC.value.toFixed(2)})`);
+    if (derived.length > 0) {
+      warnings.push(
+        `Le total HT étant incohérent, ${derived.join(" et ")} qui en ` +
+          `${derived.length > 1 ? "découlent sont également faux" : "découle est également faux"}.`
+      );
+    }
+  }
+
+  // 6) Rappel des champs clés manquants, remonté au niveau document pour l'interface.
   const missing: string[] = [];
   if (inv.supplier.value === null) missing.push("fournisseur");
   if (inv.invoiceNumber.value === null) missing.push("numéro de facture");
@@ -97,6 +159,25 @@ export async function extractInvoice(pdfPath: string): Promise<ExtractionResult>
 
   // 4-5) Contrôles de cohérence + assemblage (logique pure, testable hors-ligne)
   return finalizeInvoice(invoice, sourceDocument, ocrText.length);
+}
+
+/**
+ * recheckInvoice — recalcule les avertissements d'une facture DÉJÀ extraite.
+ *
+ * Sert après une correction manuelle : si l'utilisateur rectifie un prix, la somme des
+ * lignes peut redevenir cohérente et l'alerte doit disparaître d'elle-même. On réutilise
+ * exactement les mêmes contrôles que l'extraction initiale ; métadonnées et revue humaine
+ * sont conservées telles quelles. Logique pure, sans réseau.
+ */
+export function recheckInvoice(result: ExtractionResult): ExtractionResult {
+  const warnings: string[] = [];
+  if (result.meta.ocrCharCount < 80) {
+    warnings.push(
+      "OCR très pauvre (peu de texte extrait) : lecture peu fiable, à contrôler."
+    );
+  }
+  coherenceChecks(result, warnings);
+  return { ...result, warnings };
 }
 
 /**
